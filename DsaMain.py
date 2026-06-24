@@ -189,22 +189,47 @@
 
 
 
-def findme153(nums,x):
-    l=0
-    r=len(nums)-1
+# def findme153(nums,x):
+#     l=0
+#     r=len(nums)-1
 
-    while(r>l): # even r=0 and l=0 this condition will break
+#     while(r>l): # even r=0 and l=0 this condition will break
 
-        m=l+(r-l)//2
+#         m=l+(r-l)//2
 
-        if nums[m]>nums[r]: # if left side of the array is bigger then right side of the array then we have to move our pointer to the right side
-            l=m+1
+#         if nums[m]>nums[r]: # if left side of the array is bigger then right side of the array then we have to move our pointer to the right side
+#             l=m+1
 
-        else:  # if right is grater then we are moving to the left side
-            r=m
+#         else:  # if right is grater then we are moving to the left side
+#             r=m
 
 
-    return nums[l]
+#     return nums[l]
+
+
+
+
+
+def maxpro152(nums):
+
+    pre_max=nums[0]
+    pre_min=nums[0]
+    max_p=nums[0]
+
+    for x in nums[1:]:
+        
+        if x<0: # if x<0 means our pre_min which is negative with multiply of another negative no, it will give me positive
+            pre_max,pre_min=pre_min,pre_max
+
+        
+        pre_max=max(x,pre_max*x)
+        pre_min=min(x,pre_min*x)
+
+
+        max_p=max(pre_max,max_p)
+
+
+    return max_p
 
 
 
