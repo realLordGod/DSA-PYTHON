@@ -61,11 +61,43 @@ class DoublyLL:
         temp.prev=t
 
 
-    
-    def deletionDLL(self,val):
-        if self.head==None:
-            print("Nothing to Delete Empty Linked List")
+
+    def deletionDLL(self, val):
+
+        if self.head is None:
             return
+
+        t = self.head
+
+        if t.value == val:
+            self.head = t.next
+
+            if self.head:
+                self.head.prev = None
+
+            return
+
+        while t:
+
+            if t.value == val:
+
+                if t.next:
+                    t.prev.next = t.next
+                    t.next.prev = t.prev
+                else:
+                    t.prev.next = None
+
+                return
+
+            t = t.next
+
+
+    
+
+                
+
+        
+
 
 
 
